@@ -11,17 +11,11 @@ import { Producto } from './models';
 export class MeseroPage implements OnInit {
 
   productos: Producto[] = [];
-
+  
   private path = 'productos/';
   private path2 = 'clientes/';
 
-  pedido: Producto = {
-    nombre: '',
-    mesa: null,
-    pedido: [],
-    id: this.firestoreService.obtenerid(),
-    fecha: new Date()
-  };
+  pedido: Producto;
 
   enableNuevoPedido = false;
   enableNuevoMenu = false;
@@ -34,6 +28,13 @@ export class MeseroPage implements OnInit {
 
   nuevoPedido(){
     this.enableNuevoPedido = true;
+    this.pedido = {
+      nombre: '',
+      mesa: null,
+      menu: [],
+      id: this.firestoreService.obtenerid(),
+      fecha: new Date()
+    };
   }
 
   nuevoMenu(){
@@ -48,8 +49,9 @@ export class MeseroPage implements OnInit {
     });
   }
 
-  agregarPedido(val: Producto){
+  agregarPedido(){
     this.firestoreService.creardocumento(this.pedido, this.path2, this.pedido.id);
+
   }
 
 }

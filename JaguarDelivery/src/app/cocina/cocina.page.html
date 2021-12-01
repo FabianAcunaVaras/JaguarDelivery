@@ -5,5 +5,17 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-item *ngFor="let val of productos">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{val.nombre}}</ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        {{val.menu}}
+      </ion-card-content>
+   
+    </ion-card>
+  </ion-item>
+    
 </ion-content>

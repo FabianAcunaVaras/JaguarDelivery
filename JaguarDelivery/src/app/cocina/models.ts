@@ -1,7 +1,7 @@
 export interface Producto {
     nombre: string;
-    mesa: number;
-    menu: any;
+    precio: number;
+    descripcion: string;
     id: string;
     fecha: Date;
 }
