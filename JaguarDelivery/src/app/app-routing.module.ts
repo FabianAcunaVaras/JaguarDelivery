@@ -11,6 +11,18 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'cocina',
+    loadChildren: () => import('./cocina/cocina.module').then( m => m.CocinaPageModule)
+  },
+  {
+    path: 'mesero',
+    loadChildren: () => import('./mesero/mesero.module').then( m => m.MeseroPageModule)
+  },
+  {
+    path: 'menu-principal',
+    loadChildren: () => import('./menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)
+  },
 ];
 
 @NgModule({

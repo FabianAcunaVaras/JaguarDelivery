@@ -20,8 +20,9 @@ export class FirestoreService {
     }
 
     borrardocumento(path: string, id: string){
+      // console.log("borrar2")
       const collection = this.database.collection(path);
-      return  collection.doc(id).delete
+      return  collection.doc(id).delete();
     }
 
     actualizardocumento(data:any,path: string, id: string){
@@ -29,6 +30,15 @@ export class FirestoreService {
       return  collection.doc(id).update(data)
     }
     
+    obtenerid(){
+      return this.database.createId();
 
+    }
+
+    obtenerColeccion<tipo>(path: string){
+      const coleccion = this.database.collection<tipo>(path);
+      return coleccion.valueChanges();
+
+    }
    
 }

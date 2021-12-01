@@ -1,64 +1,84 @@
 <ion-app>
   <ion-header>
     <ion-toolbar color="light">
-      <ion-title>Jaguar Delivery</ion-title>
+      <ion-title>Jaguar Delivery- Mantenedor de menus</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content class="ion-padding">
-    <!-- <img src="../assets/image/asd.png" alt=""> -->
+    <ion-button (click)="ingresarProducto()">Nuevo Producto
+    </ion-button>
+    <ion-button routerLink="/mesero" routerDirection="forward">Mesero
+    </ion-button>
+    <ion-button routerLink="/cocina" routerDirection="forward">Cocina
+    </ion-button>
     <ion-grid fixed>
-      <ion-row>
-        
+      <ion-row>    
         <ion-col >
-          <img src="../assets/image/asd.png" alt="">
-          <ion-item color="light">
-            <ion-label>Inicio de Sesion</ion-label>
-          </ion-item>
+          <img src="../assets/image/asd.png" alt=""><ion-text><h1>Jaguar Delivery</h1></ion-text> 
         </ion-col>
-        
       </ion-row>
-      <ion-row>
+
+      <div *ngIf="enableNuevoProducto" >
+
+        <ion-row>
+          
+          <ion-col>
+            <ion-item>
+              <ion-label >Nombre Producto:</ion-label>
+              <ion-input [(ngModel)]="nuevoProducto.nombre" ></ion-input>
+            </ion-item>
+          </ion-col>
+          
+        </ion-row>
+        <ion-row>
+          
+          <ion-col>
+            <ion-item>
+              <ion-label>Descripcion Producto:</ion-label>
+              <ion-input [(ngModel)]="nuevoProducto.descripcion" ></ion-input>
+            </ion-item>
+          </ion-col>
+          
+        </ion-row>
+        <ion-row>
+          
+          <ion-col>
+            <ion-item>
+              <ion-label>Precio Producto:</ion-label>
+              <ion-input [(ngModel)]="nuevoProducto.precio" ></ion-input>
+            </ion-item>
+          </ion-col>
+          
+        </ion-row>
+        <ion-row>
         
-        <ion-col>
-          <ion-item>
-            <ion-label >Usuario</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-        </ion-col>
-        
-      </ion-row>
-      <ion-row>
-        
-        <ion-col>
-          <ion-item>
-            <ion-label>Contraseña</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-        </ion-col>
-        
-      </ion-row>
-      <ion-row>
-        
-        <ion-col>
-          <ion-item color="light">
-            <ion-select  placeholder="Elija su categoria" okText="Okay" cancelText="Dismiss">
-              <ion-select-option value="garzon">Garzon</ion-select-option>
-              <ion-select-option value="cocina">Cocina</ion-select-option>
-              <ion-select-option value="administrador">Administrador</ion-select-option>
-              <ion-select-option value="caja">Caja</ion-select-option>
-              <ion-select-option value="repartidor">Repartidor</ion-select-option>
-            </ion-select>
-          </ion-item>
-        </ion-col>
-        
-      </ion-row>
-      <ion-row>
-        <ion-button (click)="crearProducto()"> 
-          crearProducto
-          <ion-icon slot="end" name="star"></ion-icon>
-        </ion-button>
-      </ion-row>
+        </ion-row>
+        <ion-row>
+          <ion-button (click)="crearProducto()"> 
+            crearProducto
+            <ion-icon slot="end" name="star"></ion-icon>
+          </ion-button><ion-button (click)="enableNuevoProducto = false"> 
+            cerrar
+            <ion-icon slot="end" name="star"></ion-icon>
+          </ion-button>
+        </ion-row>
+        <ion-item *ngFor="let val of productos">
+          <ion-label>
+            {{val.nombre}}
+          </ion-label>
+            <ion-buttons slot="end">
+              <ion-button (click)="nuevoProducto = val">
+                <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+              </ion-button>
+              <ion-button (click)="borrarProducto(val)">
+                <ion-icon  slot="icon-only" color="danger" name="trash-outline"></ion-icon>
+              </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </div>
+
+
     </ion-grid>
   </ion-content>
 </ion-app>

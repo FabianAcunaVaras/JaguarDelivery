@@ -1,0 +1,31 @@
+<ion-content>
+  <ion-button (click)="nuevoPedido()" >Nuevo Pedido</ion-button>
+  <div *ngIf= "enableNuevoPedido" >
+    <ion-item color="light">
+      <ion-label position="floating" >Nombre Cliente</ion-label>
+      <ion-input [(ngModel)]="pedido.nombre" ></ion-input>
+    </ion-item>
+    <ion-item color="light">
+      <ion-label position="floating" >Mesa n°</ion-label>
+      <ion-input [(ngModel)]="pedido.mesa"></ion-input>
+    </ion-item>
+    <ion-item *ngFor="let val of pedidos">
+      <ion-label>
+        {{val.nombre}}-${{val.precio}}
+      </ion-label>
+      </ion-item>
+    <ion-button (click)="nuevoMenu()">Menu</ion-button>
+  </div>
+  <div *ngIf= "enableNuevoMenu">
+    <ion-item *ngFor="let val of productos">
+      <ion-label>
+        {{val.nombre}}-${{val.precio}}
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="agregarPedido(val)" >
+          <ion-icon name="add-circle-outline"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    </ion-item>
+  </div>
+</ion-content>
