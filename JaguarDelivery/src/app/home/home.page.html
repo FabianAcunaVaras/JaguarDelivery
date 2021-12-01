@@ -42,7 +42,7 @@
         
         <ion-col>
           <ion-item color="light">
-            <ion-select [interfaceOptions]="customAlertOptions" placeholder="Elija su categoria" okText="Okay" cancelText="Dismiss">
+            <ion-select  placeholder="Elija su categoria" okText="Okay" cancelText="Dismiss">
               <ion-select-option value="garzon">Garzon</ion-select-option>
               <ion-select-option value="cocina">Cocina</ion-select-option>
               <ion-select-option value="administrador">Administrador</ion-select-option>
@@ -52,6 +52,12 @@
           </ion-item>
         </ion-col>
         
+      </ion-row>
+      <ion-row>
+        <ion-button (click)="crearProducto()"> 
+          crearProducto
+          <ion-icon slot="end" name="star"></ion-icon>
+        </ion-button>
       </ion-row>
     </ion-grid>
   </ion-content>
